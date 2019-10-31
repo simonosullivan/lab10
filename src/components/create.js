@@ -1,4 +1,6 @@
 import React from 'react';
+import axios from 'axios';
+import { newExpression } from '@babel/types';
 
 class Create extends React.Component {
   constructor(props){
@@ -30,10 +32,21 @@ class Create extends React.Component {
     alert(this.state.Title+ "      " + this.state.Year 
     +"       "+ this.state.Poster);
     e.preventDefault();
-    this.setState({Title:'',
+    
+    
+                const newMovie = {
+                  title: this.state.Title,
+                  year: this.state.Year,
+                  poster: this.state.Poster
+                };
+          axios.post('http://localhost:4000/api/movies',newMovie) 
+          .then()
+          .catch();
+          
+
+          this.setState({Title:'',
                   Year:'',
-                Poster:''});
-                
+                Poster:''});    
   }
 
   render() {
